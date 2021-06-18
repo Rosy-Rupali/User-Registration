@@ -138,9 +138,26 @@ public class UserRegistration {
 
 	}
 
+	/**
+	 * UC-8 This method is validating the third rule of password of the user is
+	 * correct or not. It should contain one special character.
+	 */
+	private void validPasswordRule4() {
+		System.out.println("Enter the password: ");
+		String password = scanner.nextLine();
+		String regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(password);
+		boolean b = m.matches();
+		if (b)
+			System.out.println("password of the user is valid.");
+		else
+			System.out.println("password of the user is invalid.");
+
+	}
 	public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
-		user.validPasswordRule3();
+		user.validPasswordRule4();
 	}
 
 }
