@@ -104,7 +104,7 @@ public class UserRegistration {
 
 	/**
 	 * UC-6 This method is validating the second rule of password of the user is
-	 * correct or not. It should contain one upper case.
+	 * correct or not. It should contain atleast one upper case.
 	 */
 	private void validPasswordRule2() {
 		System.out.println("Enter the password: ");
@@ -119,10 +119,28 @@ public class UserRegistration {
 			System.out.println("password of the user is invalid.");
 
 	}
+	
+	/**
+	 * UC-7 This method is validating the third rule of password of the user is
+	 * correct or not. It should contain atleast one numeric value.
+	 */
+	private void validPasswordRule3() {
+		System.out.println("Enter the password: ");
+		String password = scanner.nextLine();
+		String regex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(password);
+		boolean b = m.matches();
+		if (b)
+			System.out.println("password of the user is valid.");
+		else
+			System.out.println("password of the user is invalid.");
+
+	}
 
 	public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
-		user.validPasswordRule2();
+		user.validPasswordRule3();
 	}
 
 }
