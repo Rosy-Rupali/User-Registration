@@ -68,12 +68,29 @@ public class UserRegistration {
 		
 	}
 
+	
+	/**
+	 * UC-4
+	 * This method is validating the Mobile number of the user is correct or not.
+	 * 
+	 */
+	private void validMobileNo() {
+		System.out.println("Enter the Mobile number: ");
+		String mobileNumber = scanner.nextLine();
+		String regex = "[0-9]{2}\\s{1}[0-9]{10}";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(mobileNumber);
+		boolean b = m.matches();
+		if(b)
+			System.out.println("Mobile number of the user is valid.");
+		else
+			System.out.println("Mobile number of the user is invalid.");
+		
+	}
 
 	public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
-		user.validFirstName();
-		user.validLastName();
-		user.validEmail();
+		user.validMobileNo();
 	}
 
 }
