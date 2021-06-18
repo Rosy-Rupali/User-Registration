@@ -85,13 +85,13 @@ public class UserRegistration {
 	}
 
 	/**
-	 * UC-5 This method is validating the first rule of password of the user is
-	 * correct or not. It should minimum of 8 characters.
+	 * UC-6 This method is validating the second rule of password of the user is
+	 * correct or not. It should contain at least one upper case.
 	 */
 	private void validPassword() {
 		System.out.println("Enter the password: ");
 		String password = scanner.nextLine();
-		String regex = ".{8,}";
+		String regex = "^(?=.*[A-Z]).{8,}$";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(password);
 		boolean b = m.matches();
@@ -102,8 +102,6 @@ public class UserRegistration {
 
 	}
 
-	
-	
 	public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
 		user.validPassword();
