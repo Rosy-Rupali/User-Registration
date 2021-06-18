@@ -85,13 +85,13 @@ public class UserRegistration {
 	}
 
 	/**
-	 * UC-6 This method is validating the second rule of password of the user is
-	 * correct or not. It should contain at least one upper case.
+	 * UC-7 This method is validating the third rule of password of the user is
+	 * correct or not. It should contain at least one numeric value.
 	 */
 	private void validPassword() {
 		System.out.println("Enter the password: ");
 		String password = scanner.nextLine();
-		String regex = "^(?=.*[A-Z]).{8,}$";
+		String regex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(password);
 		boolean b = m.matches();
