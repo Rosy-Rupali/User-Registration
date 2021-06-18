@@ -88,9 +88,26 @@ public class UserRegistration {
 		
 	}
 
+	/**
+	 * UC-5
+	 * This method is validating the first rule of password of the user is correct or not.
+	 */
+	private void validPasswordRule1() {
+		System.out.println("Enter the password: ");
+		String password = scanner.nextLine();
+		String regex = ".{8,}";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(password);
+		boolean b = m.matches();
+		if(b)
+			System.out.println("password of the user is valid.");
+		else
+			System.out.println("password of the user is invalid.");
+		
+	}
 	public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
-		user.validMobileNo();
+		user.validPasswordRule1();
 	}
 
 }
