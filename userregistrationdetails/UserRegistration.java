@@ -16,7 +16,7 @@ public class UserRegistration {
 	 * This method is validating the first name of the user is correct or not.
 	 */
 	private void validFirstName() {
-		System.out.println("Enter the first name: ");
+		System.out.println("Enter the First name: ");
 		String name = scanner.next();
 		String regex = "^[A-Z][a-z]{2,}";
 		if (name.matches(regex)) {
@@ -25,10 +25,22 @@ public class UserRegistration {
 			System.out.println("First Name of the user is invalid.");
 		}
 	}
+	
+	private void validLastName() {
+		System.out.println("Enter the Last name: ");
+		String name = scanner.next();
+		String regex = "^[A-Z][a-z]{2,}";
+		if (name.matches(regex)) {
+			System.out.println("Last Name of the user is valid.");
+		} else {
+			System.out.println("Last Name of the user is invalid.");
+		}
+	}
 
 	public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
 		user.validFirstName();
+		user.validLastName();
 	}
 
 }
