@@ -15,8 +15,7 @@ public class UserRegistration {
 	Scanner scanner = new Scanner(System.in);
 
 	/**
-	 * UC-1
-	 * This method is validating the first name of the user is correct or not.
+	 * UC-1 This method is validating the first name of the user is correct or not.
 	 */
 	private void validFirstName() {
 		System.out.println("Enter the First name: ");
@@ -33,8 +32,7 @@ public class UserRegistration {
 	}
 
 	/**
-	 * UC-2
-	 * This method is validating the last name of the user is correct or not.
+	 * UC-2 This method is validating the last name of the user is correct or not.
 	 */
 	private void validLastName() {
 		System.out.println("Enter the Last name: ");
@@ -49,10 +47,9 @@ public class UserRegistration {
 			System.out.println("Last Name of the user is invalid.");
 		}
 	}
-	
+
 	/**
-	 * UC-3
-	 * This method is validating the email id of the user is correct or not.
+	 * UC-3 This method is validating the email id of the user is correct or not.
 	 */
 	private void validEmail() {
 		System.out.println("Enter the Email Id: ");
@@ -61,17 +58,16 @@ public class UserRegistration {
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(emailId);
 		boolean b = m.matches();
-		if(b)
+		if (b)
 			System.out.println("Email Id of the user is valid.");
 		else
 			System.out.println("Email Id of the user is invalid.");
-		
+
 	}
 
-	
 	/**
-	 * UC-4
-	 * This method is validating the Mobile number of the user is correct or not.
+	 * UC-4 This method is validating the Mobile number of the user is correct or
+	 * not.
 	 * 
 	 */
 	private void validMobileNo() {
@@ -81,16 +77,16 @@ public class UserRegistration {
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(mobileNumber);
 		boolean b = m.matches();
-		if(b)
+		if (b)
 			System.out.println("Mobile number of the user is valid.");
 		else
 			System.out.println("Mobile number of the user is invalid.");
-		
+
 	}
 
 	/**
-	 * UC-5
-	 * This method is validating the first rule of password of the user is correct or not.
+	 * UC-5 This method is validating the first rule of password of the user is
+	 * correct or not. It should minimum of 8 characters.
 	 */
 	private void validPasswordRule1() {
 		System.out.println("Enter the password: ");
@@ -99,15 +95,34 @@ public class UserRegistration {
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(password);
 		boolean b = m.matches();
-		if(b)
+		if (b)
 			System.out.println("password of the user is valid.");
 		else
 			System.out.println("password of the user is invalid.");
-		
+
 	}
+
+	/**
+	 * UC-6 This method is validating the second rule of password of the user is
+	 * correct or not. It should contain one upper case.
+	 */
+	private void validPasswordRule2() {
+		System.out.println("Enter the password: ");
+		String password = scanner.nextLine();
+		String regex = "^(?=.*[A-Z]).{8,}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(password);
+		boolean b = m.matches();
+		if (b)
+			System.out.println("password of the user is valid.");
+		else
+			System.out.println("password of the user is invalid.");
+
+	}
+
 	public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
-		user.validPasswordRule1();
+		user.validPasswordRule2();
 	}
 
 }
