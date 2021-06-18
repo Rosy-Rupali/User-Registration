@@ -88,7 +88,7 @@ public class UserRegistration {
 	 * UC-5 This method is validating the first rule of password of the user is
 	 * correct or not. It should minimum of 8 characters.
 	 */
-	private void validPasswordRule1() {
+	private void validPassword() {
 		System.out.println("Enter the password: ");
 		String password = scanner.nextLine();
 		String regex = ".{8,}";
@@ -102,62 +102,11 @@ public class UserRegistration {
 
 	}
 
-	/**
-	 * UC-6 This method is validating the second rule of password of the user is
-	 * correct or not. It should contain atleast one upper case.
-	 */
-	private void validPasswordRule2() {
-		System.out.println("Enter the password: ");
-		String password = scanner.nextLine();
-		String regex = "^(?=.*[A-Z]).{8,}$";
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(password);
-		boolean b = m.matches();
-		if (b)
-			System.out.println("password of the user is valid.");
-		else
-			System.out.println("password of the user is invalid.");
-
-	}
 	
-	/**
-	 * UC-7 This method is validating the third rule of password of the user is
-	 * correct or not. It should contain atleast one numeric value.
-	 */
-	private void validPasswordRule3() {
-		System.out.println("Enter the password: ");
-		String password = scanner.nextLine();
-		String regex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(password);
-		boolean b = m.matches();
-		if (b)
-			System.out.println("password of the user is valid.");
-		else
-			System.out.println("password of the user is invalid.");
-
-	}
-
-	/**
-	 * UC-8 This method is validating the third rule of password of the user is
-	 * correct or not. It should contain one special character.
-	 */
-	private void validPasswordRule4() {
-		System.out.println("Enter the password: ");
-		String password = scanner.nextLine();
-		String regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$";
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(password);
-		boolean b = m.matches();
-		if (b)
-			System.out.println("password of the user is valid.");
-		else
-			System.out.println("password of the user is invalid.");
-
-	}
+	
 	public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
-		user.validPasswordRule4();
+		user.validPassword();
 	}
 
 }
