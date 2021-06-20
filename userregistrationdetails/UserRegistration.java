@@ -7,6 +7,7 @@
  *************************************************/
 package userregistrationdetails;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,7 +20,7 @@ public class UserRegistration {
 	 */
 	private void validFirstName() {
 		System.out.println("Enter the First name: ");
-		String name = scanner.next();
+		String name = scanner.nextLine();
 		String regex = "^[A-Z][a-z]{2,}";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(name);
@@ -36,7 +37,7 @@ public class UserRegistration {
 	 */
 	private void validLastName() {
 		System.out.println("Enter the Last name: ");
-		String name = scanner.next();
+		String name = scanner.nextLine();
 		String regex = "^[A-Z][a-z]{2,}";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(name);
@@ -54,6 +55,7 @@ public class UserRegistration {
 	private void validEmail() {
 		System.out.println("Enter the Email Id: ");
 		String emailId = scanner.next();
+		scanner.nextLine();
 		String regex = "^[a-z0-9.+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(emailId);
@@ -85,12 +87,22 @@ public class UserRegistration {
 	}
 
 	/**
+	 * UC-5 This method is validating the first rule of password of the user is
+	 * correct or not. It should minimum of 8 characters.
+	 * 
+	 * UC-6 This method is validating the second rule of password of the user is
+	 * correct or not. It should contain at least one upper case.
+	 * 
+	 * UC-7 This method is validating the third rule of password of the user is
+	 * correct or not. It should contain at least one numeric value.
+	 * 
 	 * UC-8 This method is validating the third rule of password of the user is
 	 * correct or not. It should contain one special character.
 	 */
 	private void validPassword() {
 		System.out.println("Enter the password: ");
-		String password = scanner.nextLine();
+		String password = scanner.next();
+		scanner.nextLine();
 		String regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(password);
@@ -102,10 +114,53 @@ public class UserRegistration {
 
 	}
 
+	/**
+	 * UC-9 This method is used to check the given email addresses are valid or not.
+	 */
+	private void multipleEmailId() {
+		String regex = "^[0-9a-zA-Z]+([+._-]{1}[0-9a-zA-Z]+)?@[0-9a-zA-Z]+[.]{1}[a-zA-z]{2,4}([.]{1}[a-zA-z]{2,3})?$";
+		ArrayList<String> email = new ArrayList<>();
+		email.add("abc@yahoo.com");
+		email.add("abc-100@yahoo.om");
+		email.add("abc.100@yahoo.com");
+		email.add("abc111@abc.com");
+		email.add("abc-100@abc.net");
+		email.add("abc.100@abc.com.au");
+		email.add("abc@1.com");
+		email.add("abc@gmail.com.com");
+		email.add("abc+100@gmail.com");
+		email.add("abc");
+		email.add("abc@.com.my");
+		email.add("abc123@gmail.a");
+		email.add("abc123@.com");
+		email.add("abc123@.com.com");
+		email.add(".abc@abc.com");
+		email.add("abc()*@gmail.com");
+		email.add("abc@%*.com");
+		email.add("abc..2002@gmail.com");
+		email.add("abc.@gmail.com");
+		email.add("abc@abc@gmail.com");
+		email.add("abc@gmail.com.1a");
+		email.add("abc@gmail.com.aa.au");
+		for(String str : email) {
+			if(str.matches(regex))
+				System.out.println("It is valid");
+			else
+				System.out.println("It is invalid");
+		}
+		scanner.close();
+	}
 
 	public static void main(String[] args) {
 		UserRegistration user = new UserRegistration();
+		user.validFirstName();
+		user.validLastName();
+		user.validEmail();
+		user.validMobileNo();
 		user.validPassword();
+		UserRegistration email = new UserRegistration();
+		email.multipleEmailId();
 	}
+	
 
 }
